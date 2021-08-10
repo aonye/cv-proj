@@ -6,10 +6,12 @@ class DateLeft extends React.Component {
             <div>
                 <label> Date Left: </label>
                 <br></br>
-                <input id='dateLeft' type='text' value={this.props.value} onChange={(event) => this.props.handleChange(event)} />
+                <input name='dateLeft' type='date' onChange={(event) => this.props.handleChange(event, this.props.makeID)} />
             </div>
         );
     }
 }
+
+//value = { this.props.data.WorkExp1.dateLeft } ..assigning value when inputs are created does not work
 
 export default DateLeft;

@@ -4,9 +4,9 @@ class Company extends React.Component {
     render() {
         return (
             <div>
-                <label>Company: </label>
+                <label> Company Name: </label>
                 <br></br>
-                <input id='company' type='text' value={this.props.value} onChange={(event) => this.props.handleChange(event)} />
+                <input name='company' type='text' onChange={(event) => this.props.handleChange(event, this.props.makeID)} />
             </div>
         );
     }

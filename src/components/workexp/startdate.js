@@ -6,7 +6,7 @@ class DateStart extends React.Component {
             <div>
                 <label> Date Start: </label>
                 <br></br>
-                <input id='dateStart' type='text' value={this.props.value} onChange={(event) => this.props.handleChange(event)} />
+                <input name='dateStart' type='date' onChange={(event) => this.props.handleChange(event, this.props.makeID)} />
             </div>
         );
     }

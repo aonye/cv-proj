@@ -14,13 +14,17 @@ class PersonalInfo extends React.Component {
         return (
             <div>
                 <FirstName firstName={firstName} handleChange={this.props.handleChange} />
-                <LastName lastName={lastName} handleChange={this.props.handleChange} />
+                <div class='col-md-6 col-sm-12' style={{ float: 'right' }}>
+                    <LastName lastName={lastName} handleChange={this.props.handleChange} />
+                </div>
                 <Address address={address} handleChange={this.props.handleChange} />
                 <PhoneNumber phone={phone} handleChange={this.props.handleChange} />
-                <LinkedIn linkedin={linkedin} handleChange={this.props.handleChange} />
+                <div class='col-md-6 col-sm-12' style={{ float: 'right' }}>
+                    <LinkedIn linkedin={linkedin} handleChange={this.props.handleChange} />
+                </div>
                 <Email email={email} handleChange={this.props.handleChange} />
                 <Location location={location} handleChange={this.props.handleChange} />
-            </div>
+            </div >
         );
     }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 class FirstName extends React.Component {
     render() {
         return (
-            <div>
+            <div class='styled-input'>
                 <label> First Name: </label>
                 <br></br>
                 <input id='firstName' type='text' value={this.props.firstName} onChange={(event) => this.props.handleChange(event)} required />

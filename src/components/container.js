@@ -116,8 +116,11 @@ class Container extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <PersonalInfo data={this.state} handleChange={this.handleChange} />
+            <form class='row input-container' onSubmit={this.handleSubmit}>
+                <div>
+                    <h1>Personal Info</h1>
+                    <PersonalInfo data={this.state} handleChange={this.handleChange} />
+                </div>
                 <div id='workexp'>
                     {this.state.workExp}
                     <button id='WEBtn' onClick={this.handleAdd}>Add Work Experience</button>

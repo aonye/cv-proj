@@ -6,6 +6,9 @@ class App extends React.Component {
   render() {
     return (
       <div class='container'>
+        <header>
+          Aonye's CV Project
+        </header>
         <Container />
       </div>
     );

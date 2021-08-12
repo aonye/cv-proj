@@ -13,17 +13,27 @@ class PersonalInfo extends React.Component {
         const { firstName, lastName, address, phone, linkedin, email, location } = this.props.data;
         return (
             <div>
-                <FirstName firstName={firstName} handleChange={this.props.handleChange} />
-                <div class='col-md-6 col-sm-12' style={{ float: 'right' }}>
+                <div class='styled-input'>
+                    <FirstName firstName={firstName} handleChange={this.props.handleChange} />
+                </div>
+                <div class='styled-input' style={{ float: 'right' }}>
                     <LastName lastName={lastName} handleChange={this.props.handleChange} />
                 </div>
-                <Address address={address} handleChange={this.props.handleChange} />
-                <PhoneNumber phone={phone} handleChange={this.props.handleChange} />
-                <div class='col-md-6 col-sm-12' style={{ float: 'right' }}>
+                <div class='styled-input wide'>
+                    <Address address={address} handleChange={this.props.handleChange} />
+                </div>
+                <div class='styled-input'>
+                    <PhoneNumber phone={phone} handleChange={this.props.handleChange} />
+                </div>
+                <div class='styled-input' style={{ float: 'right' }}>
                     <LinkedIn linkedin={linkedin} handleChange={this.props.handleChange} />
                 </div>
-                <Email email={email} handleChange={this.props.handleChange} />
-                <Location location={location} handleChange={this.props.handleChange} />
+                <div class='styled-input wide'>
+                    <Email email={email} handleChange={this.props.handleChange} />
+                </div>
+                <div class='styled-input wide'>
+                    <Location location={location} handleChange={this.props.handleChange} />
+                </div>
             </div >
         );
     }

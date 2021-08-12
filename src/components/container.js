@@ -122,14 +122,16 @@ class Container extends React.Component {
                     <PersonalInfo data={this.state} handleChange={this.handleChange} />
                 </div>
                 <div id='workexp'>
+                    <h1>Work experience</h1>
                     {this.state.workExp}
-                    <button id='WEBtn' onClick={this.handleAdd}>Add Work Experience</button>
+                    <div id='WEBtn' class='btn-lrg submit-btn' onClick={this.handleAdd}>Add Work Experience</div>
                 </div>
                 <div>
+                    <h1>Education</h1>
                     {this.state.edu}
-                    <button id='eduBtn' onClick={this.handleAdd}>Add Education</button>
+                    <div id='eduBtn' class="btn-lrg submit-btn" onClick={this.handleAdd}>Add Education</div>
                 </div>
-                <input type='submit'></input>
+                <input class='styled-input wide' id='submit' type='submit'></input>
             </form>
         );
     }

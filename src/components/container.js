@@ -44,13 +44,15 @@ class Container extends React.Component {
     }
 
     handleChange(index, arr, event) {
+        if (index === null || arr === null) {
+            this.setState({ [event.target.id]: event.target.value }, () => { console.log(this.state) });
+            return;
+        }
         // if (id) {
         //     let obj = { ...this.state[id] };
         //     obj[event.target.name] = event.target.value;
         //     this.setState({ [id]: obj }, () => { console.log(this.state[id]) });
         // }
-        //else {
-        //this.setState({ [event.target.id]: event.target.value }, () => { console.log(this.state) });
         //console.log('inside handle event', obj, event, id);
         // let tempObj = { ...this.state[id] };
         // tempObj[event.target.name] = event.target.value;
@@ -172,7 +174,7 @@ class Container extends React.Component {
                         <form className='row input-container' onSubmit={this.handleSubmit}>
                             <div>
                                 <h1>Personal Info</h1>
-                                <PersonalInfo data={this.state} handleChange={this.handleChange} />
+                                <PersonalInfo data={this.state} handleChange={this.handleChange.bind(this, null, null)} />
                             </div>
                             <div id='workexp'>
                                 <h1>Work experience</h1>

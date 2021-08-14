@@ -10,6 +10,7 @@ import Location from './personalinfo/location';
 class PersonalInfo extends React.Component {
 
     render() {
+        console.log(this.props);
         const { firstName, lastName, address, phone, linkedin, email, location } = this.props.data;
         return (
             <div>

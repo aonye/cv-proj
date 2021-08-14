@@ -6,7 +6,7 @@ class Company extends React.Component {
             <div>
                 <label> Company Name: </label>
                 <br></br>
-                <input name='company' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} />
+                <input name='company' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} required />
             </div>
         );
     }

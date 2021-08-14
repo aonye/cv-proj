@@ -6,7 +6,7 @@ class School extends React.Component {
             <div>
                 <label> School: </label>
                 <br></br>
-                <input name='school' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} />
+                <input name='school' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} required />
             </div>
         );
     }

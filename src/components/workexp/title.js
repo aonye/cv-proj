@@ -6,7 +6,7 @@ class Title extends React.Component {
             <div>
                 <label> Job Title: </label>
                 <br></br>
-                <input name='title' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} />
+                <input name='title' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} required />
             </div>
         );
     }

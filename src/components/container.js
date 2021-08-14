@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import PersonalInfo from './personalinfo';
 import WorkExperience from './workexperience';
 import Education from './education';
+import editIcon from './../editicon.png';
 
 function workObjFact() {
     return {
@@ -40,30 +41,17 @@ class Container extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleState = this.handleState.bind(this);
+        this.handlePrint = this.handlePrint.bind(this);
     }
 
     handleChange(index, arr, event) {
         if (index === null || arr === null) {
-            this.setState({ [event.target.id]: event.target.value }, () => { console.log(this.state) });
+            this.setState({ [event.target.id]: event.target.value });
             return;
         }
-        // if (id) {
-        //     let obj = { ...this.state[id] };
-        //     obj[event.target.name] = event.target.value;
-        //     this.setState({ [id]: obj }, () => { console.log(this.state[id]) });
-        // }
-        //console.log('inside handle event', obj, event, id);
-        // let tempObj = { ...this.state[id] };
-        // tempObj[event.target.name] = event.target.value;
-        // this.setState({ [id]: tempObj }, () => this.forceUpdate());
-        // const key = event.target.name;
-        // let workExp = [...this.state.workExp];
-        // workExp[i] = { [key]: event.target.value };
-        //this.setState({ workExp }, () => console.log(this.state));
         let obj = arr[index];
         obj[event.target.name] = event.target.value;
-        this.setState({ [arr[0]]: obj }, () => console.log(this.state));
+        this.setState({ [arr[0]]: obj });
     }
 
     handleSubmit(event) {
@@ -74,40 +62,52 @@ class Container extends React.Component {
             return;
         }
         this.setState({ submit: false });
-
-        // var joinedArr = this.state.tasks.concat(this.state.value);
-        // this.setState({ tasks: joinedArr });
-        // this.setState({ value: '' });
     }
 
-    handleState(a) {
-        console.log(a);
+    handlePrint(event) {
+        window.print();
     }
 
     createUI(key) {
         if (key === 'workexp') {
             return this.state.workExp.map((item, index) => {
                 const arr = this.state.workExp;
-                return (
-                    < div key={index} >
-                        <WorkExperience item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
-                        <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh', display: 'none' }} onClick={this.removeClickWE.bind(this, item, index)}>Remove Work Exp</div>
-                    </div >
-                );
+                if (this.state.submit === true) {
+                    return (
+                        < div key={index} >
+                            <WorkExperience item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                        </div > //do not render button
+                    );
+                } else {
+                    return (
+                        < div key={index} >
+                            <WorkExperience item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                            <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh' }} onClick={this.removeClickWE.bind(this, item, index)}>Remove Work Exp</div>
+                        </div >
+                    );
+                }
             });
         } else if (key === 'edu') {
             return this.state.edu.map((item, index) => {
                 const arr = this.state.edu;
-                return (
-                    < div key={index} >
-                        <Education item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
-                        <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh', display: 'none' }} onClick={this.removeClickEdu.bind(this, index)}>Remove Education</div>
-                    </div >
-                );
+                if (this.state.submit === true) {
+                    return (
+                        < div key={index} >
+                            <Education item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                        </div > //do not render button
+                    );
+                } else {
+                    return (
+                        < div key={index} >
+                            <Education item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                            <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh' }} onClick={this.removeClickEdu.bind(this, index)}>Remove Education</div>
+                        </div >
+                    );
+                }
             });
         }
     }
-    s
+
     addClick(event) {
         if (event.target.id === 'eduBtn') {
             const obj = eduObjFact();
@@ -164,7 +164,8 @@ class Container extends React.Component {
                         <div className='personalInfo'>
                             {this.createUI('edu')}
                         </div>
-                        <div onClick={this.handleSubmit}>Edit</div>
+                        <img id='edit' src={editIcon} alt='editIcon' height='32px' width='25px' onClick={this.handleSubmit} />
+                        <button id='print' style={{ float: 'right' }} onClick={this.handlePrint}>Print Page</button>
                     </div>
                     :
                     <div>

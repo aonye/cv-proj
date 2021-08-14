@@ -6,7 +6,7 @@ class Description extends React.Component {
             <div>
                 <label> Description: </label>
                 <br></br>
-                <input name='description' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} />
+                <input name='description' type='text' value={this.props.value || ''} onChange={(event) => this.props.handleChange(event)} required />
             </div>
         );
     }

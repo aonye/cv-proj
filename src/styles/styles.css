@@ -127,6 +127,15 @@ textarea {
     }
 }
 
+@media print {
+    #edit {
+    display: none;
+}
+  #print {
+    display: none;
+  }
+}
+
 input[type=checkbox] + label {
   color: #ccc;
   font-style: italic;
@@ -159,4 +168,12 @@ input[type=checkbox]:checked + label {
 
 #exp {
     margin-bottom: 2vh;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+button:hover{
+    cursor: pointer;
 }

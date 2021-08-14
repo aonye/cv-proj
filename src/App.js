@@ -5,10 +5,7 @@ import './styles/styles.css';
 class App extends React.Component {
   render() {
     return (
-      <div class='container'>
-        <header>
-          Aonye's CV Project
-        </header>
+      <div className='container'>
         <Container />
       </div>
     );

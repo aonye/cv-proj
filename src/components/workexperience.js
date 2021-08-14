@@ -6,32 +6,70 @@ import DateLeft from './workexp/leftdate';
 import Description from './workexp/description';
 
 class WorkExperience extends React.Component {
+    constructor(props) {
+        super();
+    }
+
     render() {
-        const { workExpCount } = this.props.data;
-        const makeID = `workExp${workExpCount}`;
+        const { title, company, dateStart, dateLeft, description } = this.props.item;
         return (
             <div>
-                <div class='styled-input'>
-                    <Title makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input' style={{ float: 'right' }}>
-                    <Company makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input'>
-                    <DateStart makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input' style={{ float: 'right' }}>
-                    <DateLeft makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input wide'>
-                    <Description makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-            </div >
+                {this.props.submitStatus ?
+                    <div>
+                        <div>
+                            Job Title: {title}
+                        </div>
+                        <div>
+                            Company Name: {company}
+                        </div>
+                        <div>
+                            Date Started: {dateStart}
+                        </div>
+                        <div>
+                            Date Left: {dateLeft}
+                        </div>
+                        <div>
+                            Responsibilites: {description}
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        <div className='styled-input'>
+                            <Title value={title} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input' style={{ float: 'right' }}>
+                            <Company value={company} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input'>
+                            <DateStart value={dateStart} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input' style={{ float: 'right' }}>
+                            <DateLeft value={dateLeft} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input wide'>
+                            <Description value={description} handleChange={this.props.handleChange} />
+                        </div>
+                    </div >}
+            </div>
         );
     }
 }
 
-//<NewWorkExp id= data={this.props.data} handleChange={this.props.handleChange}
-//{this.props.data.AddWEClicked ? <input type='text' /> : null}
+// <div>{this.state.title}</div>
+// <div>{this.state.company}</div>
+// <div>{this.state.dateStart}</div>
+// <div>{this.state.dateLeft}</div>
+// <div>{this.state.description}</div>
+
+
+// this.state = {
+//     title: '',
+//     company: '',
+//     dateStart: '',
+//     dateLeft: '',
+//     description: '',
+// }
+// this.handleChange = this.handleChange.bind(this);
+// this.handleSubmit = this.handleSubmit.bind(this);
 
 export default WorkExperience;

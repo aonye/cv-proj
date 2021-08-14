@@ -13,25 +13,25 @@ class PersonalInfo extends React.Component {
         const { firstName, lastName, address, phone, linkedin, email, location } = this.props.data;
         return (
             <div>
-                <div class='styled-input'>
+                <div className='styled-input'>
                     <FirstName firstName={firstName} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input' style={{ float: 'right' }}>
+                <div className='styled-input' style={{ float: 'right' }}>
                     <LastName lastName={lastName} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input wide'>
+                <div className='styled-input wide'>
                     <Address address={address} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input'>
+                <div className='styled-input'>
                     <PhoneNumber phone={phone} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input' style={{ float: 'right' }}>
+                <div className='styled-input' style={{ float: 'right' }}>
                     <LinkedIn linkedin={linkedin} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input wide'>
+                <div className='styled-input wide'>
                     <Email email={email} handleChange={this.props.handleChange} />
                 </div>
-                <div class='styled-input wide'>
+                <div className='styled-input wide'>
                     <Location location={location} handleChange={this.props.handleChange} />
                 </div>
             </div >

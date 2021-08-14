@@ -7,28 +7,50 @@ import Description from './workexp/description';
 
 class Education extends React.Component {
     render() {
-        const { eduCount } = this.props.data;
-        const makeID = `edu${eduCount}`;
+        const { degree, school, dateStart, dateLeft, description } = this.props.item;
         return (
             <div>
-                <div class='styled-input'>
-                    <Degree makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input' style={{ float: 'right' }}>
-                    <School makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input'>
-                    <DateStart makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input' style={{ float: 'right' }}>
-                    <DateLeft makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
-                <div class='styled-input wide'>
-                    <Description makeID={makeID} handleChange={this.props.handleChange} />
-                </div>
+                {this.props.submitStatus ?
+                    <div>
+                        <div>
+                            Degree: {degree}
+                        </div>
+                        <div>
+                            School Name: {school}
+                        </div>
+                        <div>
+                            Date Started: {dateStart}
+                        </div>
+                        <div>
+                            Date Left: {dateLeft}
+                        </div>
+                        <div>
+                            Description: {description}
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        <div className='styled-input'>
+                            <Degree value={degree} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input' style={{ float: 'right' }}>
+                            <School value={school} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input'>
+                            <DateStart value={dateStart} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input' style={{ float: 'right' }}>
+                            <DateLeft value={dateLeft} handleChange={this.props.handleChange} />
+                        </div>
+                        <div className='styled-input wide'>
+                            <Description value={description} handleChange={this.props.handleChange} />
+                        </div>
+                    </div>}
             </div>
+
         );
     }
 }
 
 export default Education;
+

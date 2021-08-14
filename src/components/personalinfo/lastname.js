@@ -6,7 +6,7 @@ class LastName extends React.Component {
             <div>
                 <label> Last Name: </label>
                 <br></br>
-                <input id='lastName' type='text' value={this.props.LastName} onChange={(event) => this.props.handleChange(event)} required />
+                <input id='lastName' type='text' value={this.props.lastName} onChange={(event) => this.props.handleChange(event)} required />
             </div>
         );
     }

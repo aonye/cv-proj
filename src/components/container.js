@@ -34,110 +34,167 @@ class Container extends React.Component {
             linkedin: '',
             email: '',
             location: '',
-            workExpCount: 0,
             workExp: [],
-            eduCount: 0,
             edu: [],
+            submit: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
+        this.handleState = this.handleState.bind(this);
     }
 
-    handleChange(event, id) {
-        if (id) {
-            let obj = { ...this.state[id] };
-            obj[event.target.name] = event.target.value;
-            this.setState({ [id]: obj }, () => { console.log(this.state[id]) });
-        } else {
-            this.setState({ [event.target.id]: event.target.value }, () => { console.log(this.state) });
-        }
+    handleChange(index, arr, event) {
+        // if (id) {
+        //     let obj = { ...this.state[id] };
+        //     obj[event.target.name] = event.target.value;
+        //     this.setState({ [id]: obj }, () => { console.log(this.state[id]) });
+        // }
+        //else {
+        //this.setState({ [event.target.id]: event.target.value }, () => { console.log(this.state) });
+        //console.log('inside handle event', obj, event, id);
+        // let tempObj = { ...this.state[id] };
+        // tempObj[event.target.name] = event.target.value;
+        // this.setState({ [id]: tempObj }, () => this.forceUpdate());
+        // const key = event.target.name;
+        // let workExp = [...this.state.workExp];
+        // workExp[i] = { [key]: event.target.value };
+        //this.setState({ workExp }, () => console.log(this.state));
+        let obj = arr[index];
+        obj[event.target.name] = event.target.value;
+        this.setState({ [arr[0]]: obj }, () => console.log(this.state));
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
+        let submitState = this.state.submit;
+        if (!submitState) {
+            this.setState({ submit: true });
+            return;
+        }
+        this.setState({ submit: false });
+
         // var joinedArr = this.state.tasks.concat(this.state.value);
         // this.setState({ tasks: joinedArr });
         // this.setState({ value: '' });
     }
 
-    handleAdd(event) {
-        switch (event.target.id) {
-            case 'WEBtn': {
-                this.addWE(event);
-                break;
-            }
-            case 'eduBtn': {
-                this.addEdu(event);
-                break;
-            }
-            default: {
-                console.log('never print this');
-            }
+    handleState(a) {
+        console.log(a);
+    }
+
+    createUI(key) {
+        if (key === 'workexp') {
+            return this.state.workExp.map((item, index) => {
+                const arr = this.state.workExp;
+                return (
+                    < div key={index} >
+                        <WorkExperience item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                        <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh', display: 'none' }} onClick={this.removeClickWE.bind(this, item, index)}>Remove Work Exp</div>
+                    </div >
+                );
+            });
+        } else if (key === 'edu') {
+            return this.state.edu.map((item, index) => {
+                const arr = this.state.edu;
+                return (
+                    < div key={index} >
+                        <Education item={item} submitStatus={this.state.submit} handleChange={this.handleChange.bind(this, index, arr)} />
+                        <div className="btn-lrg submit-btn" style={{ marginBottom: '2vh', display: 'none' }} onClick={this.removeClickEdu.bind(this, index)}>Remove Education</div>
+                    </div >
+                );
+            });
+        }
+    }
+    s
+    addClick(event) {
+        if (event.target.id === 'eduBtn') {
+            const obj = eduObjFact();
+            this.setState((prevState) => ({ edu: [...prevState.edu, obj] }));
+        } else if (event.target.id === 'WEBtn') {
+            const obj = workObjFact();
+            this.setState(prevState => ({ workExp: [...prevState.workExp, obj] }));
         }
     }
 
-    addWE(event) {
-        const obj = workObjFact();
-        let count = this.state.workExpCount;
-        count++;
-        this.setState(
-            {
-                workExpCount: count,
-                [`workExp${count}`]: obj,
-            }, function () {
-                const newWE = <WorkExperience key={count} data={this.state} handleChange={this.handleChange} />
-                let workExp = this.state.workExp.slice();
-                workExp.push(newWE);
-                this.setState({
-                    workExp: workExp,
-                }, () => console.log(this.state)); //check state with CB, erase this
-            });
+    removeClickWE(i) {
+        let workExp = [...this.state.workExp];
+        workExp.splice(i, 1);
+        this.setState({ workExp });
     }
 
-    addEdu(event) {
-        const obj = eduObjFact();
-        let count = this.state.eduCount;
-        count++;
-        this.setState(
-            {
-                eduCount: count,
-                [`edu${count}`]: obj,
-            }, function () {
-                const newEdu = <Education key={count} data={this.state} handleChange={this.handleChange} />
-                let edu = this.state.edu.slice();
-                edu.push(newEdu);
-                this.setState({
-                    edu: edu,
-                }, () => console.log(this.state)); //erase this
-            });
+    removeClickEdu(i) {
+        let edu = [...this.state.edu];
+        edu.splice(i, 1);
+        this.setState({ edu });
     }
 
     render() {
         return (
-            <form class='row input-container' onSubmit={this.handleSubmit}>
-                <div>
-                    <h1>Personal Info</h1>
-                    <PersonalInfo data={this.state} handleChange={this.handleChange} />
-                </div>
-                <div id='workexp'>
-                    <h1>Work experience</h1>
-                    {this.state.workExp}
-                    <div id='WEBtn' class='btn-lrg submit-btn' onClick={this.handleAdd}>Add Work Experience</div>
-                </div>
-                <div>
-                    <h1>Education</h1>
-                    {this.state.edu}
-                    <div id='eduBtn' class="btn-lrg submit-btn" onClick={this.handleAdd}>Add Education</div>
-                </div>
-                <input class='styled-input wide' id='submit' type='submit'></input>
-            </form>
+            <div>
+                {this.state.submit ?
+                    <div className='row input-container'>
+                        <h4>Personal Information</h4>
+                        <div className='personalInfo'>
+                            <div>
+                                Name: {`${this.state.firstName} ${this.state.lastName}`}
+                            </div>
+                            <div>
+                                Address: {this.state.address}
+                            </div>
+                            <div>
+                                Phone Number: {this.state.phone}
+                            </div>
+                            <div>
+                                Email Address: {this.state.email}
+                            </div>
+                            <div>
+                                Location: {this.state.location}
+                            </div>
+                            <div>
+                                LinkedIn: {this.state.linkedin}
+                            </div>
+                        </div>
+                        <h4>Work Information</h4>
+                        <div className='personalInfo'>
+                            {this.createUI('workexp')}
+                        </div>
+                        <h4>Education</h4>
+                        <div className='personalInfo'>
+                            {this.createUI('edu')}
+                        </div>
+                        <div onClick={this.handleSubmit}>Edit</div>
+                    </div>
+                    :
+                    <div>
+                        <header>
+                            Aonye's CV Project
+                        </header>
+                        <form className='row input-container' onSubmit={this.handleSubmit}>
+                            <div>
+                                <h1>Personal Info</h1>
+                                <PersonalInfo data={this.state} handleChange={this.handleChange} />
+                            </div>
+                            <div id='workexp'>
+                                <h1>Work experience</h1>
+                                {this.createUI('workexp')}
+                                <div id='WEBtn' className='btn-lrg submit-btn' onClick={this.addClick.bind(this)}>Add Work Experience</div>
+                            </div>
+                            <div>
+                                <h1>Education</h1>
+                                {this.createUI('edu')}
+                                <div id='eduBtn' className="btn-lrg submit-btn" onClick={this.addClick.bind(this)}>Add Education</div>
+                            </div>
+                            <input className='styled-input wide' id='submit' type='submit'></input>
+                        </form>
+                    </div>
+                }
+            </div>
         );
     }
 }
 
 export default Container;
+
 
 
 

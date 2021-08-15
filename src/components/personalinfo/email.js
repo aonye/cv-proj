@@ -8,6 +8,6 @@ const Email = (props) => {
             <input id='email' type='email' placeholder='fluffycat@mail.com' value={props.email} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
-}
+};
 
 export default Email;

@@ -8,6 +8,6 @@ const LastName = (props) => {
             <input id='lastName' type='text' value={props.lastName} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
-}
+};
 
 export default LastName;

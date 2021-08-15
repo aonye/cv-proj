@@ -5,71 +5,49 @@ import DateStart from './workexp/startdate';
 import DateLeft from './workexp/leftdate';
 import Description from './workexp/description';
 
-class WorkExperience extends React.Component {
-    constructor(props) {
-        super();
-    }
-
-    render() {
-        const { title, company, dateStart, dateLeft, description } = this.props.item;
-        return (
-            <div>
-                {this.props.submitStatus ?
+const WorkExperience = (props) => {
+    const { title, company, dateStart, dateLeft, description } = props.item;
+    return (
+        <div>
+            {props.submitStatus ?
+                <div>
                     <div>
-                        <div>
-                            Job Title: {title}
-                        </div>
-                        <div>
-                            Company Name: {company}
-                        </div>
-                        <div>
-                            Date Started: {dateStart}
-                        </div>
-                        <div>
-                            Date Left: {dateLeft}
-                        </div>
-                        <div>
-                            Responsibilites: {description}
-                        </div>
+                        Job Title: {title}
                     </div>
-                    :
                     <div>
-                        <div className='styled-input'>
-                            <Title value={title} handleChange={this.props.handleChange} />
-                        </div>
-                        <div className='styled-input' style={{ float: 'right' }}>
-                            <Company value={company} handleChange={this.props.handleChange} />
-                        </div>
-                        <div className='styled-input'>
-                            <DateStart value={dateStart} handleChange={this.props.handleChange} />
-                        </div>
-                        <div className='styled-input' style={{ float: 'right' }}>
-                            <DateLeft value={dateLeft} handleChange={this.props.handleChange} />
-                        </div>
-                        <div className='styled-input wide'>
-                            <Description value={description} handleChange={this.props.handleChange} />
-                        </div>
-                    </div >}
-            </div>
-        );
-    }
-}
-
-// <div>{this.state.title}</div>
-// <div>{this.state.company}</div>
-// <div>{this.state.dateStart}</div>
-// <div>{this.state.dateLeft}</div>
-// <div>{this.state.description}</div>
-
-
-// this.state = {
-//     title: '',
-//     company: '',
-//     dateStart: '',
-//     dateLeft: '',
-//     description: '',
-// }
-// this.handleChange = this.handleChange.bind(this);
-// this.handleSubmit = this.handleSubmit.bind(this);
+                        Company Name: {company}
+                    </div>
+                    <div>
+                        Date Started: {dateStart}
+                    </div>
+                    <div>
+                        Date Left: {dateLeft}
+                    </div>
+                    <div>
+                        Responsibilites: {description}
+                    </div>
+                    <br></br>
+                </div>
+                :
+                <div>
+                    <div className='styled-input'>
+                        <Title value={title} handleChange={props.handleChange} />
+                    </div>
+                    <div className='styled-input' style={{ float: 'right' }}>
+                        <Company value={company} handleChange={props.handleChange} />
+                    </div>
+                    <div className='styled-input'>
+                        <DateStart value={dateStart} handleChange={props.handleChange} />
+                    </div>
+                    <div className='styled-input' style={{ float: 'right' }}>
+                        <DateLeft value={dateLeft} handleChange={props.handleChange} />
+                    </div>
+                    <div className='styled-input wide'>
+                        <Description value={description} handleChange={props.handleChange} />
+                    </div>
+                </div >}
+        </div>
+    );
+};
 
 export default WorkExperience;

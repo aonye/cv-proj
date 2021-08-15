@@ -7,9 +7,10 @@ import Description from './workexp/description';
 
 const Education = (props) => {
     const { degree, school, dateStart, dateLeft, description } = props.item;
+    const [id, index] = props.id.split(/(\d+)/g, 2);
     return (
         <div>
-            {props.submitStatus ?
+            {props.submit ?
                 <div>
                     <div>
                         Degree: {degree}
@@ -31,19 +32,19 @@ const Education = (props) => {
                 :
                 <div>
                     <div className='styled-input'>
-                        <Degree value={degree} handleChange={props.handleChange} />
+                        <Degree id={id} index={index} value={degree} handleChange={props.handleChange} />
                     </div>
                     <div className='styled-input' style={{ float: 'right' }}>
-                        <School value={school} handleChange={props.handleChange} />
+                        <School id={id} index={index} value={school} handleChange={props.handleChange} />
                     </div>
                     <div className='styled-input'>
-                        <DateStart value={dateStart} handleChange={props.handleChange} />
+                        <DateStart id={id} index={index} value={dateStart} handleChange={props.handleChange} />
                     </div>
                     <div className='styled-input' style={{ float: 'right' }}>
-                        <DateLeft value={dateLeft} handleChange={props.handleChange} />
+                        <DateLeft id={id} index={index} value={dateLeft} handleChange={props.handleChange} />
                     </div>
                     <div className='styled-input wide'>
-                        <Description value={description} handleChange={props.handleChange} />
+                        <Description id={id} index={index} value={description} handleChange={props.handleChange} />
                     </div>
                 </div>}
         </div>

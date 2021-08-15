@@ -5,7 +5,7 @@ const LastName = (props) => {
         <div>
             <label> Last Name: </label>
             <br></br>
-            <input id='lastName' type='text' value={props.lastName} onChange={(event) => props.handleChange(event)} required />
+            <input name='lastName' type='text' value={props.lastName} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
 };

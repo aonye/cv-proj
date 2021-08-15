@@ -5,7 +5,7 @@ const PhoneNumber = (props) => {
         <div>
             <label> Phone number: </label>
             <br></br>
-            <input id='phone' type='tel' placeholder='XXX-XXX-XXXX' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' value={props.phone} onChange={(event) => props.handleChange(event)} required />
+            <input name='phone' type='tel' placeholder='XXX-XXX-XXXX' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' value={props.phone} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
 };

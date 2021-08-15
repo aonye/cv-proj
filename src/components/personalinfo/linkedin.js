@@ -5,7 +5,7 @@ const LinkedIn = (props) => {
         <div>
             <label> LinkedIn: </label>
             <br></br>
-            <input id='linkedin' type='text' placeholder='Linkedin.com/in/extension' value={props.linkedin} onChange={(event) => props.handleChange(event)} />
+            <input name='linkedin' type='text' placeholder='Linkedin.com/in/extension' value={props.linkedin} onChange={(event) => props.handleChange(event)} />
         </div>
     );
 };

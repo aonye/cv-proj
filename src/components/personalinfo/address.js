@@ -5,7 +5,7 @@ const Address = (props) => {
         <div>
             <label> Street Address: </label>
             <br></br>
-            <input id='address' type='text' value={props.address} onChange={(event) => props.handleChange(event)} required />
+            <input name='address' type='text' value={props.address} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
 };

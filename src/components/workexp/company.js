@@ -5,7 +5,7 @@ const Company = (props) => {
         <div>
             <label> Company Name: </label>
             <br></br>
-            <input name='company' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event)} required />
+            <input name='company' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event, props.id, props.index)} required />
         </div>
     );
 };

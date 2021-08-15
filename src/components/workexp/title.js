@@ -5,7 +5,7 @@ const Title = (props) => {
         <div>
             <label> Job Title: </label>
             <br></br>
-            <input name='title' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event)} required />
+            <input name='title' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event, props.id, props.index)} required />
         </div>
     );
 };

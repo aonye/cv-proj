@@ -5,7 +5,7 @@ const Location = (props) => {
         <div>
             <label> Location: </label>
             <br></br>
-            <input id='location' type='text' placeholder='City, State or Country' value={props.location} onChange={(event) => props.handleChange(event)} />
+            <input name='location' type='text' placeholder='City, State or Country' value={props.location} onChange={(event) => props.handleChange(event)} />
         </div>
     );
 };

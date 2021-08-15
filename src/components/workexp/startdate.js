@@ -5,7 +5,7 @@ const DateStart = (props) => {
         <div>
             <label> Date Start: </label>
             <br></br>
-            <input name='dateStart' type='date' value={props.value || ''} onChange={(event) => props.handleChange(event)} required />
+            <input name='dateStart' type='date' value={props.value || ''} onChange={(event) => props.handleChange(event, props.id, props.index)} required />
         </div>
     );
 };

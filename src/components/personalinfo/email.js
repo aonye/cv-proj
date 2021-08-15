@@ -5,7 +5,7 @@ const Email = (props) => {
         <div >
             <label> Email: </label>
             <br></br>
-            <input id='email' type='email' placeholder='fluffycat@mail.com' value={props.email} onChange={(event) => props.handleChange(event)} required />
+            <input name='email' type='email' placeholder='fluffycat@mail.com' value={props.email} onChange={(event) => props.handleChange(event)} required />
         </div>
     );
 };

@@ -5,7 +5,7 @@ const School = (props) => {
         <div>
             <label> School: </label>
             <br></br>
-            <input name='school' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event)} required />
+            <input name='school' type='text' value={props.value || ''} onChange={(event) => props.handleChange(event, props.id, props.index)} required />
         </div>
     );
 };

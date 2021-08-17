@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PersonalInfo from './personalinfo';
 import WorkExperience from './workexperience';
 import Education from './education';
@@ -18,6 +18,10 @@ const Container = () => {
         edu: [],
         submit: false,
     });
+
+    useEffect(() => {
+        document.title = 'CV App Creator';
+    }, []);
 
     const handleChange = (event, id, index) => {
         if (!id && !index) { //id/index falsy for not-nested state (personalInfo)
